@@ -1,0 +1,55 @@
+To provide a detailed API structure for your system with a two-layer design, incorporating interaction with the provided data tables, here's an example:
+
+Layer 1: Data Access Layer (DAL)
+This layer interacts directly with the databases and handles the CRUD (Create, Read, Update, Delete) operations. It ensures proper authentication and authorization before accessing or modifying the data.
+
+API Endpoints:
+
+1. Authentication Endpoint:
+   - POST /auth/login: Authenticates a user by validating their credentials against the User Credentials table.
+
+2. User Details Endpoints:
+   - GET /users/{userId}: Retrieves user details from the User Details table based on the provided userId.
+   - POST /users: Creates a new user record in the User Details table.
+   - PUT /users/{userId}: Updates user details in the User Details table for the specified userId.
+   - DELETE /users/{userId}: Deletes the user record from the User Details table for the specified userId.
+
+3. Bank Details Endpoints:
+   - GET /banks/{bankId}: Retrieves bank details from the Bank Details table based on the provided bankId.
+   - POST /banks: Creates a new bank record in the Bank Details table.
+   - PUT /banks/{bankId}: Updates bank details in the Bank Details table for the specified bankId.
+   - DELETE /banks/{bankId}: Deletes the bank record from the Bank Details table for the specified bankId.
+
+4. API Log Endpoints:
+   - GET /logs: Retrieves the logs from the API Log database for auditing and monitoring purposes.
+   - POST /logs: Adds a new log entry to the API Log database.
+
+Layer 2: API Controller Layer
+This layer serves as an abstraction layer and enforces Broken Object Level Authorization (BOLA) and Personally Identifiable Information (PII) masking. It interacts with the DAL and handles the incoming requests from clients.
+
+API Endpoints:
+
+1. Authentication Endpoint:
+   - POST /api/auth/login: Validates the user's credentials and generates an authentication token.
+
+2. User Details Endpoints:
+   - GET /api/users/{userId}: Retrieves user details by invoking the corresponding DAL endpoint.
+   - POST /api/users: Creates a new user record by invoking the corresponding DAL endpoint.
+   - PUT /api/users/{userId}: Updates user details by invoking the corresponding DAL endpoint.
+   - DELETE /api/users/{userId}: Deletes the user record by invoking the corresponding DAL endpoint.
+
+3. Bank Details Endpoints:
+   - GET /api/banks/{bankId}: Retrieves bank details by invoking the corresponding DAL endpoint.
+   - POST /api/banks: Creates a new bank record by invoking the corresponding DAL endpoint.
+   - PUT /api/banks/{bankId}: Updates bank details by invoking the corresponding DAL endpoint.
+   - DELETE /api/banks/{bankId}: Deletes the bank record by invoking the corresponding DAL endpoint.
+
+4. API Log Endpoints:
+   - GET /api/logs: Retrieves the logs from the API Log database by invoking the corresponding DAL endpoint.
+   - POST /api/logs: Adds a new log entry to the API Log database by invoking the corresponding DAL endpoint.
+
+In addition to the endpoints mentioned above, you may need to consider additional endpoints for error handling, user registration, password reset, etc., depending on your system requirements.
+
+It's crucial to implement proper input validation, authentication, authorization, and logging mechanisms at both layers to ensure security and protect sensitive data. The DAL layer directly interacts with the databases, while the API Controller layer enforces security measures and abstracts the underlying implementation details.
+
+Please note that the above API details provide a general structure, and you may need to further refine and customize them based on your specific business logic and requirements.
