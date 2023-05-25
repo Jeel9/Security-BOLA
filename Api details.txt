@@ -53,3 +53,42 @@ In addition to the endpoints mentioned above, you may need to consider additiona
 It's crucial to implement proper input validation, authentication, authorization, and logging mechanisms at both layers to ensure security and protect sensitive data. The DAL layer directly interacts with the databases, while the API Controller layer enforces security measures and abstracts the underlying implementation details.
 
 Please note that the above API details provide a general structure, and you may need to further refine and customize them based on your specific business logic and requirements.
+To implement authorization checks in the API controller to verify if the authenticated user is authorized to access the requested data, you can follow these general steps:
+
+1. Define User Roles and Permissions: Identify the different roles and their associated permissions in your system. For example, roles like "Admin," "User," or "Manager" may have different levels of access and privileges.
+
+2. Retrieve User Details: Obtain the authenticated user's details from the authentication token or session. This information may include the user's ID, roles, or any other relevant data needed for authorization.
+
+3. Implement Authorization Logic: In the API controller, apply the authorization logic based on the user's roles and the requested data. Here are a few approaches you can consider:
+
+   a. Role-Based Authorization: Check if the user's role has the necessary permissions to access the requested resource. You can use annotations like `@PreAuthorize` from Spring Security to define role-based authorization rules directly on the API endpoints. For example:
+
+      ```java
+      @GetMapping("/api/data/{id}")
+      @PreAuthorize("hasRole('ROLE_ADMIN')")
+      public ResponseEntity<?> getData(@PathVariable("id") String id) {
+          // Check if the authenticated user has the 'ROLE_ADMIN' role
+          // If authorized, retrieve and return the requested data
+          // If not authorized, return an error response
+      }
+      ```
+
+   b. Attribute-Based Authorization: Perform fine-grained authorization by evaluating specific attributes of the user or the requested data. You can use custom authorization logic in the API controller to check if the user has the necessary permissions based on the attributes. For example:
+
+      ```java
+      @GetMapping("/api/data/{id}")
+      public ResponseEntity<?> getData(@PathVariable("id") String id, Authentication authentication) {
+          // Retrieve the authenticated user's details from the authentication object
+          // Perform custom authorization checks based on the user's attributes and the requested data
+          // If authorized, retrieve and return the requested data
+          // If not authorized, return an error response
+      }
+      ```
+
+   c. Externalized Authorization: If you have a more complex authorization scheme or need to evaluate authorization rules based on external systems or policies, you can integrate with external authorization servers or policy engines. These systems can provide fine-grained access control and dynamic authorization based on various factors.
+
+4. Handle Unauthorized Access: When the authorization check fails, return an appropriate error response (e.g., HTTP 401 Unauthorized or HTTP 403 Forbidden) to indicate that the user is not authorized to access the requested resource.
+
+It's important to note that the specific implementation details may vary depending on your chosen authentication and authorization mechanisms, such as using JWT tokens, OAuth, or integrating with an identity provider. You can adapt the above steps accordingly to fit your system's requirements and the tools and libraries you're using.
+
+By incorporating proper authorization checks in the API controller, you can ensure that only authorized users can access specific data or perform certain actions, enhancing the security of your API.
