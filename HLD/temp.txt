@@ -1,9 +1,5 @@
-Problem Statement: 
-
-In the context of banking systems, there is a critical need to address security vulnerabilities related to Broken Object Level Authorization (BOLA) and the protection of Sensitive Personally Identifiable Information (PII). BOLA refers to the risk of unauthorized access to sensitive resources within the system, potentially leading to unauthorized data retrieval, modification, or deletion. Additionally, safeguarding PII is of utmost importance to protect customers' personal and financial information, ensuring compliance with data privacy regulations.
-
-Therefore, there is a demand for an advanced solution that serves as a comprehensive security analyzer and protector, specifically designed for banking environments. This solution should effectively identify instances of BOLA vulnerabilities and proactively enforce strict access controls to prevent unauthorized access to sensitive resources. Additionally, it should implement robust mechanisms to mask or encrypt PII, minimizing the risk of data breaches and enhancing overall data security.
-
-The primary goal of this project is to develop a sophisticated and reliable system that analyzes, detects, and mitigates BOLA vulnerabilities, while ensuring the highest level of protection for sensitive PII within banking systems. The system should provide a user-friendly interface for administrators to monitor and manage security settings, as well as generate alerts and reports to facilitate proactive security measures. By successfully addressing these challenges, the project aims to fortify the security infrastructure of banking systems and enhance customer trust and confidence in their financial transactions.
-
-Objective: Develop a robust system to analyze and protect banking systems from Broken Object Level Authorization (BOLA) vulnerabilities and safeguard Sensitive Personally Identifiable Information (PII).
+Objective 1: Develop a comprehensive system to detect and mitigate Broken Object Level Authorization (BOLA) vulnerabilities in banking systems.
+Objective 2: Implement robust access controls and authorization mechanisms to prevent unauthorized access to sensitive resources.
+Objective 3: Incorporate advanced techniques to mask or encrypt Sensitive Personally Identifiable Information (PII) within the banking systems.
+Objective 4: Establish an audit logging framework to track and log all system activities for enhanced security monitoring and forensic analysis.
+Objective 5: Provide administrators with a user-friendly interface to manage security settings, generate reports, and receive alerts for proactive security measures.
